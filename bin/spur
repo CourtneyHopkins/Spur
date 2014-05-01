@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# run spur sinatra app
+echo 'starting Spur'
+rerun rackup config.ru
