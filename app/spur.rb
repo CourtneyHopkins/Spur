@@ -1,6 +1,12 @@
 require 'sinatra'
+require 'sinatra-initializers'
+require 'sinatra/activerecord'
+require './app/services/rotten_tomatoes/rotten_tomatoes'
 
 class Spur < Sinatra::Base
+
+    register Sinatra::Initializers
+    register Sinatra::ActiveRecordExtension
 
     get '/hi' do
         @status = 'working'
