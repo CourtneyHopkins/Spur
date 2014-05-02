@@ -8,6 +8,8 @@ class Spur < Sinatra::Base
     register Sinatra::Initializers
     register Sinatra::ActiveRecordExtension
 
+    RottenTomatoes::Config.api_key = ENV['ROTTENTOMATOES_KEY']
+
     get '/hi' do
         @status = 'working'
         erb :index
