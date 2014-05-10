@@ -10,6 +10,7 @@ gem 'rake'
 gem 'sinatra-activerecord'
 gem 'mysql2'
 gem 'rottentomatoes'
+gem 'faraday'
 
 group :development, :test do
     gem 'dotenv'

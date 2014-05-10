@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra-initializers'
 require 'sinatra/activerecord'
-require './app/services/rotten_tomatoes/rotten_tomatoes'
+require './app/services/rotten_tomatoes'
 
 class Spur < Sinatra::Base
 
