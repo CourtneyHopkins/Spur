@@ -5,13 +5,10 @@ module RottenTomatoes
 
         API_URI = 'http://api.rottentomatoes.com'
         API_VERSION = '/api/public/v1.0'
-        MOVIE_LIST_TYPES = %w( box_office in_theaters opening upcoming )
         CONTENT_TYPE = 'json'
 
         def initialize( args = {} )
             @list = args[ :list ]
-            verify_movie_list
-             
         end
 
         def full_path
@@ -19,17 +16,11 @@ module RottenTomatoes
         end
 
         def get_movies
-            response = connection.get full_path
-            content = JSON.parse( response.body ).symbolize_keys
-            movies = content[ :movies ]
+            parse_response( connection.get full_path )[ :movies ]
         end
 
-        def verify_movie_list 
-            raise Exception unless is_valid_movie_list?
-        end
-
-        def is_valid_movie_list?
-             MOVIE_LIST_TYPES.include?( list )
+        def parse_response( response )
+            JSON.parse( response.body ).symbolize_keys
         end
 
         def connection

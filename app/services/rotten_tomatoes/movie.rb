@@ -1,9 +1,25 @@
 module RottenTomatoes
     class Movie
 
-    end
+        attr_accessor :id, :title, :year, :mpaa_rating, :runtime,
+                      :critics_consensus, :release_dates, :ratings, :synopsis, 
+                      :posters, :abridged_cast, :alternate_ids, :links
+        
+        def initialize( args = {} )
+            args.each do |key, val|
+                self.send("#{ key }=", val )
+            end
 
-    class Movies
+            build_actors
+        end
 
+        def build_actors
+            actors = []
+            abridged_cast.each do |actor|
+                actors << RottenTomatoes::Actor.new( actor )
+            end
+
+            self.abridged_cast = actors
+        end
     end
 end

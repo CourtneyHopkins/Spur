@@ -11,6 +11,7 @@ gem 'sinatra-activerecord'
 gem 'mysql2'
 gem 'rottentomatoes'
 gem 'faraday'
+gem 'tux', group: :development
 
 group :development, :test do
     gem 'dotenv'
